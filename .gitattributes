@@ -1,8 +1,8 @@
-Data/*
-Software/*
-Data/
-Software/
+Data/* linguist-vendored
+Software/* linguist-vendored
 # File Types
-*.json
-*.dat
-*.md
+* linguist-vendored
+*.js linguist-vendored=false
+*.json linguist-vendored=false
+*.css linguist-vendored=false
+*.html linguist-vendored=false
