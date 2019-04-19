@@ -2,7 +2,7 @@ Data/* linguist-vendored
 Software/* linguist-vendored
 Python/* linguist-vendored=false
 # File Types
-*.js linguist-vendored
-*.json linguist-vendored
-*.css linguist-vendored
-*.html linguist-vendored
+#*.js linguist-vendored
+#*.json linguist-vendored
+#*.css linguist-vendored
+#*.html linguist-vendored
