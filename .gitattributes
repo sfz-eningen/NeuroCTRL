@@ -1,8 +1,8 @@
-Data/* linguist-vendored=false
-Software/* linguist-vendored=false
+Data/* linguist-vendored
+Software/* linguist-vendored
+Python/* linguist-vendored=false
 # File Types
-* linguist-vendored
-*.js linguist-vendored=false
-*.json linguist-vendored=false
-*.css linguist-vendored=false
-*.html linguist-vendored=false
+*.js linguist-vendored
+*.json linguist-vendored
+*.css linguist-vendored
+*.html linguist-vendored
