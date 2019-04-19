@@ -1,5 +1,5 @@
-Data/* linguist-vendored
-Software/* linguist-vendored
+Data/* linguist-vendored=false
+Software/* linguist-vendored=false
 # File Types
 * linguist-vendored
 *.js linguist-vendored=false
