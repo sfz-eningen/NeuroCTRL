@@ -1,2 +1,8 @@
+Data/*
+Software/*
 Data/
 Software/
+# File Types
+*.json
+*.dat
+*.md
