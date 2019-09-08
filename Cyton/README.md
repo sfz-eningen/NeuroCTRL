@@ -6,7 +6,7 @@ Main files are:
 | File Name | Function                     |
 |-----------|------------------------------|
 | start.py  | Start graphical UI           |
-| main.py   | Temporal flow of the Program |
-|           |                              |
+| main.py   | Chronological flow of the Program |
+| README.md          | You are reading it right now                             |
 
 ### Libs
