@@ -3,10 +3,10 @@
 ### Files
 Main files are:
 
-| File Name | Function                     |
-|-----------|------------------------------|
-| start.py  | Start graphical UI           |
+| File Name | Function                          |
+|-----------|------------------------------:    |
+| start.py  | Start graphical UI                |
 | main.py   | Chronological flow of the Program |
-| README.md          | You are reading it right now                             |
+| README.md | You are reading it right now      |
 
 ### Libs
