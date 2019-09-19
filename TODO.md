@@ -22,5 +22,5 @@
  - **Display Container** **([master/graphics/main_ui.py](./graphics/main_ui.py))**
 
 ## Tensorflow
-
+## Links
 [Main Page](https://sfz-eningen.github.io/NeuroCTRL/)
