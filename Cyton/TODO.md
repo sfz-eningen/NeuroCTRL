@@ -3,6 +3,7 @@
 ### Libraries ([master/basic_libs](./basic_libs))
  - **Timeline to FFT** **([master/basic_libs/fft.py](./basic_libs/fft.py))**
  - **FFT/TL to Bands** **([more](https://de.wikipedia.org/wiki/Elektroenzephalografie))** **([master/basic_libs/fft.py](./basic_libs/fft.py))**
+ 
    | Band Name   | Frequency Lower | Frequency Higher |
    |-------------|----------------:|-----------------:|
    | **Delta**   |          0.1 Hz |           < 4 Hz |
