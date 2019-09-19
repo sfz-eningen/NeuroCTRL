@@ -21,11 +21,6 @@
 ### UI ([master/graphics](./graphics))
  - **Display Container** **([master/graphics/main_ui.py](./graphics/main_ui.py))**
 
-## Tensorflow ([master/tensorflow](./tensorflow))
- - **Install**
-   - *Add into Repo as Lib*
- - **Base Script**
-   - *Set up settings*
- - **Loader**
-   - Loader for new samples
- - **Recognizer**
+## Tensorflow
+## Links
+[Main Page](https://sfz-eningen.github.io/NeuroCTRL/)
