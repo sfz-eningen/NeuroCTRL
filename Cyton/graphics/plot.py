@@ -1,9 +1,4 @@
 #!/usr/bin/env python
-# Plot a graph of Data which is comming in on the fly
-# uses pylab
-# Author: Norbert Feurle
-# Date: 12.1.2012
-# License: if you get any profit from this then please share it with me
 import pylab
 import tkinter
 from pylab import *
