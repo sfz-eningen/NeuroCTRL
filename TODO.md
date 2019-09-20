@@ -1,3 +1,5 @@
+<link rel="icon" href="http://icons.iconarchive.com/icons/papirus-team/papirus-apps/512/python-icon.png">
+
 # TODO
 ## Libs/User Interface
 ### Libraries ([master/basic_libs](./basic_libs))
