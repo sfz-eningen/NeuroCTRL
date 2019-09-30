@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>NeuroCTRL Dashboard</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <link rel='stylesheet' type='text/css' media='screen' href='w3.css'>
+  <script src='main.js'></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+  <div class="w3-sidebar w3-bar-block w3-indigo w3-xxlarge" style="width:70px">
+    <a title="Start/Stop" href="#" class="w3-bar-item w3-button"><i class="fa fa-power-off"></i></a> 
+    <a title="Recalibrate Filter" href="#" class="w3-bar-item w3-button"><i class="fa fa-filter"></i></a> 
+    <a title="Refresh" href="#" class="w3-bar-item w3-button"><i class="fa fa-refresh"></i></a> 
+    <a title="Connect" href="#" class="w3-bar-item w3-button"><i class="fa fa-plug"></i></a>
+  </div>
+  <div style="margin-left: 70px">
+    <!--button class="w3-btn" onclick="document.getElementById('id01').style.display='block'">Show panel</button>
+
+    <div id="id01" class="w3-panel w3-green w3-display-container" style="display:none">
+      <span onclick="this.parentElement.style.display='none'"
+      class="w3-button w3-display-topright">X</span>
+      <p>Click on the X to close this panel.</p>
+      <p>Click on the X to close this panel.</p>
+    </div-->
+
+    <div class="w3-container" style="height: 100vh; background-color: #222;">
+      <h1 style="color: #ffffff">NeuroCTRL Dashboard</h1>
+      <div class="w3-hover-border-blue w3-panel w3-border w3-border-indigo" style="background-color: #232323">
+        <p style="color: #ffffff"><b>General</b></p>
+        <div class="w3-bar">
+          <center>
+            <button class="w3-btn w3-indigo w3-round-xxlarge" style="margin-bottom:25px">Refresh Filter</button>
+            <button class="w3-btn w3-indigo w3-round-xxlarge" style="margin-bottom:25px">Restart Service</button>
+            <button class="w3-btn w3-indigo w3-round-xxlarge" style="margin-bottom:25px">Connect</button>
+          </center>
+        </div>
+        <div class="w3-light-grey w3-round">
+            <div class="w3-container w3-round w3-indigo" style="width:34%; margin-bottom:10px; color: #ffffff">Startup Progress: 34%</div>
+        </div>
+        <div class="w3-light-grey w3-round">
+            <div class="w3-container w3-round w3-indigo" style="width:45%; color: #ffffff">Accuracy: 45%</div>
+        </div>
+        <p></p>
+      </div>
+      <div class="w3-hover-border-blue w3-panel w3-border w3-border-indigo" style="background-color: #232323">
+        <b style="color: #ffffff"><p>Live Plot</p></b>
+        <center>
+          <p style="color: #ffffff">Some Graph</p>  
+          <iframe src="http://127.0.0.1:8050" name="hexbin" width="620" height="620"></frame>
+        </center>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
