@@ -3,7 +3,7 @@ PRINT=@echo
 I_OPT=Ateempting to install
 LEND=.
 CC=pyinstaller
-COPT=-y
+COPT=-y -F
 FOLDER=./Cyton
 install:
 	$(PRINT) $(I_OPT) $(PKGNAME)$(LEND)
