@@ -11,8 +11,8 @@ class getUDP():
   port="67671"
   buff=1024
   # INIT
-  def __init__(self, host="127.0.0.1", port="65535", buff=1024):
-    self.host, self.port, self.buff= host, int(port), buff
+  def __init__(self, host="127.0.0.1", port="12345", buff=1024):
+    self.host, self.port, self.buff = host, int(port), int(buff)
     del host, port, buff
     self.sock = socket.socket(socket.AF_INET,    # Internet
                               socket.SOCK_DGRAM) # UDP
