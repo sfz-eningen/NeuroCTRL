@@ -1,10 +1,11 @@
-import communication as com
+from communication import AutoStream, bprepr
 import sys
 
-s = com.AutoStream("band")
+s = AutoStream("band")
 try:
   while 1:
     for x in s.read():
-      sys.stdout.write(str(x["data"]))
-finally:
+      bprepr(x)
+except:
   s.stop()
+s.stop()

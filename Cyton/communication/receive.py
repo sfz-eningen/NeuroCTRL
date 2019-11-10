@@ -9,10 +9,18 @@ import ctypes
 import sys
 # FUNCTIONS
 def bprepr(data):
-  for x in data:
+  bold = "\x1B[1m"
+  clear = "\x1B[0m"
+  nstr = ["alpha", "beta", "gamma", "delta", "theta"]
+  sys.stdout.write(bold + "    ")
+  for x in nstr:
+    sys.stdout.write(str(x).ljust(12) + " ")
+  dt = data["data"]
+  sys.stdout.write(clear)
+  for x in dt:
+    sys.stdout.write("\n" + bold + str(dt.index(x)+1).rjust(2) + "  " + clear)
     for y in x:
-      sys.stdout.write(str(y) + " ")
-    sys.stdout.write("\n")
+      sys.stdout.write(str(y).ljust(12) + " ")
   sys.stdout.write("\n\n")
 
 # CLASSES
@@ -36,8 +44,8 @@ class Looper(Thread):
           
   def get_id(self): 
     # returns id of the respective thread 
-    if hasattr(self, '_thread_id'): 
-      return self._thread_id 
+    # if hasattr(self, '_thread_id'): 
+    #   return self._thread_id 
     for id, thread in threading._active.items(): 
       if thread is self: 
         return id
@@ -85,7 +93,14 @@ class Stream():
     return dat
   def read(self):
     for x in self.get():
-      yield eval(str(x)[2:-5])
+      try:
+        yield eval(str(x)[2:-5])
+      except:
+        pass
+      #   print(x)
+      #   c = str(x).replace("b'", "").replace("\\n", "").replace("\\r", "")[0:-1].replace("]", "")
+      #   print(c)
+      #   yield eval(c)
 
 
 
