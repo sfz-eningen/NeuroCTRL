@@ -1,5 +1,5 @@
 """
-Auto import file for subpackage "Cyton.cummunication"
+Auto import file for subpackage "Cyton.communication"
 """
 
 from . import *
