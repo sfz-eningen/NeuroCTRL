@@ -1,11 +1,19 @@
+from basic_libs import *
+w = fwatcher(__file__)
 from communication import AutoStream, bprepr
+from aiprep import AIStream
 import sys
 
-s = AutoStream("band")
 try:
-  while 1:
-    for x in s.read():
-      bprepr(x)
-except:
-  s.stop()
-s.stop()
+  SectionBanner("MAIN", 0)
+  s1 = AutoStream("band")
+  try:
+    while 1:
+      for e in [s1.read()]:
+        for x in e:
+          bprepr(x)
+  except:
+    SectionBanner("MAIN", 1)
+    s1.stop()
+finally: 
+  w.eof()
