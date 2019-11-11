@@ -1,11 +1,12 @@
 from communication import AutoStream, bprepr
+from aiprep import AIStream
 import sys
 
-s = AutoStream("band")
+s1 = AutoStream("band")
 try:
   while 1:
-    for x in s.read():
-      bprepr(x)
+    for e in [s1.read()]:
+      for x in e:
+        bprepr(x)
 except:
-  s.stop()
-s.stop()
+  s1.stop()
