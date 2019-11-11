@@ -30,7 +30,6 @@ def bprepr(data):
     else: stt = cstr[1]
     for y in x:
       sys.stdout.write("\x1B[" + stt + "m " + str(y)[0:8].ljust(8) + clear + "")
-  sys.stdout.write("\n\n")
 
 # CLASSES
 class Looper(Thread): 
@@ -70,7 +69,7 @@ class Looper(Thread):
         self.prog.append(dat)
     except: 
       # Stop Message
-      print(f'\n\n\x1B[1;31mThread "{self.name}" has been stopped!\n\x1B[1;33m  RUNTIME: {round((time.time()-t)*100)/100}s\n  stream-info:\n\t{self.stream}\n\x1B[0m') 
+      print(f'\n\n\x1B[1;31mThread "{self.name}" has been stopped!\n\x1B[1;33m  RUNTIME: {round((time.time()-t)*100)/100}s\n  stream-info:\n\t{self.stream}\x1B[0m') 
           
   def get_id(self): 
     """returns id of the respective thread"""
@@ -131,7 +130,7 @@ class Stream():
     """
     self.th.raiseexception()
     time.sleep(0.1)
-    print(f'\n\n\x1B[1;31mStream "{self.name}" has been stopped!\n\x1B[1;33m  stream-info:\n\t{self.handle}\n\x1B[0m') 
+    print(f'\n\n\x1B[1;31mStream "{self.name}" has been stopped!\n\x1B[1;33m  stream-info:\n\t{self.handle}\x1B[0m') 
   def get(self):
     while self.th.prog == []:
       pass

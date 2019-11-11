@@ -1,5 +1,6 @@
 import os
 import time
+import sys
 
 def highlight_module(stg, typ="module"):
     so = ""
@@ -20,6 +21,7 @@ class fwatcher():
         self.t, self.file = time.time(), highlight_script(os.path.basename(file))
     def eof(self):
         co = f"""\x1B[33;1m{self.file}\x1B[34;1m:\x1B[32;1mEOF\n  \x1B[32;1mExecution took: {round(100*(time.time()-self.t))/100}s\x1B[0m\n"""
+        print("\t\t\t\n\t\t\t")
         print(co)
 
 class swatcher():
@@ -39,19 +41,23 @@ class iwatcher():
         print(co)
 
 class pwatcher():
+    import shutil
     t = 0.0
     def __init__(self, name, typ="module"):
+        self.columns, rows = self.shutil.get_terminal_size(fallback=(80, 24))
+        del rows
         self.t, self.file = time.time(), highlight_module(name, typ=typ)
     def eof(self):
-        co = f"""\x1B[33;1m{self.file}\x1B[34;1m:\x1B[32;1mEOI\n  \x1B[32;1mImport took: {round(100*(time.time()-self.t))/100}s\x1B[0m\n"""
-        print(co)
+        co = f"""\x1B[3;2H\x1B[33;1m{self.file}\x1B[34;1m:\x1B[32;1mEOI\n          \x1B[32;1mImport took: {round(100*(time.time()-self.t))/100}s\x1B[0m\n"""
+        sys.stdout.write("\x1B[3;9H" + "".ljust(self.columns - 1, " ") + "\n" + "".ljust(self.columns - 1, " "))
+        sys.stdout.write(co)
 
-def SectionBanner(section, status):
-    import shutil
-    columns, rows = shutil.get_terminal_size(fallback=(80, 24))
-    del rows
-    if status == 0:
-        status = "START"
-    else:
-        status = "STOP"
-    print("\n\x1B[34;1m\t" + f"""---------- {section}:{status} ----------""".center(columns - 12, "-") + "\x1B[0m")
+# def SectionBanner(section, status):
+#     import shutil
+#     columns, rows = shutil.get_terminal_size(fallback=(80, 24))
+#     del rows
+#     if status == 0:
+#         status = "START"
+#     else:
+#         status = "END"
+#     print("\n\x1B[34;1m\t" + f"""---------- {section}:{status} ----------""".center(columns - 12, "-") + "\x1B[0m")
