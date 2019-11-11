@@ -102,8 +102,6 @@ class Stream():
       #   print(c)
       #   yield eval(c)
 
-
-
 class AutoStream():
   plist = {
     "band": 12345,
