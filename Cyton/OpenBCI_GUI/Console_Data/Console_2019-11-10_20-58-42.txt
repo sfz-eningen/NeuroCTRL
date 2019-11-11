@@ -1,0 +1,56 @@
+Console Log Started at Local Time: 2019-11-10_20-58-42
+Screen Resolution: 2560 X 1080
+Welcome to the Processing-based OpenBCI GUI!
+For more information, please visit: https://docs.openbci.com/OpenBCI%20Software/
+Launching application from local data dir
+OpenBCI_GUI: hubStart: OS Detected: Windows
+Local Version: 413, Latest Version: 416
+GUI needs to be updated. Download at https://github.com/OpenBCI/OpenBCI_GUI/releases/latest
+OpenBCI_GUI::Setup: Is RX mulitcast: false
+OpenBCI_GUI::Setup: Has RX joined multicast: false
+OpenBCI_GUI::Setup: Sample Data exists in Documents folder.
+ControlP5 2.2.6 infos, comments, questions at http://www.sojamo.de/libraries/controlP5
+CP: Playback History Size = 1
+OpenBCI_GUI::Setup: Setup is complete!
+Instantiating hub object...
+Hub: clientEvent: handshake complete
+sourceList: click! 
+setInterface: curInterface: -1
+channel count set to 8
+Calling initSystem()
+
+
+=================================================
+||             INITIALIZING SYSTEM             ||
+=================================================
+
+InitSettings: Saving Default Settings to file!
+SoftwareSettings: 3 active widgets saved!
+LoadGUISettings: Applied Widget 0 to Container 4
+LoadGUISettings: Applied Widget 2 to Container 9
+LoadGUISettings: Applied Widget 8 to Container 3
+LoadGUISettings: Expert Mode Off
+Networking: Serial selected from Protocol Menu
+[SUCCESS]: Settings Loaded!
+OpenBCI_GUI: setup: RESIZED
+WidgetManager.pde: Remapping widgets to container layout...
+headPlot: computeWeightFactor: Ielec 0, solution complete with 2000 iterations. max_dVal = 1.8614532E-5
+headPlot: computeWeightFactor: Ielec 1, solution complete with 2000 iterations. max_dVal = 1.8626451E-5
+headPlot: computeWeightFactor: Ielec 2, solution complete with 2000 iterations. max_dVal = 3.1363965E-5
+headPlot: computeWeightFactor: Ielec 3, solution complete with 2000 iterations. max_dVal = 3.0714273E-5
+headPlot: computeWeightFactor: Ielec 4, solution complete with 2000 iterations. max_dVal = 1.1348725E-5
+headPlot: computeWeightFactor: Ielec 5, solution complete with 2000 iterations. max_dVal = 1.0430813E-5
+New widget [3] selected for container...
+Your cursor is in Accelerometer
+Networking: UDP selected from Protocol Menu
+-- UDP session started at Sun Nov 10 20:58:49 CET 2019 --
+-- bound socket to host:127.0.0.1, port: 51000 --
+[19-11-10 21:07:59.378 +0100] close socket < port:51000, address:127.0.0.1 >
+
+Client SocketException: Socket closed
+SHUTDOWN HOOK
+SHUTDOWN HUB
+java.lang.NullPointerException
+	at OpenBCI_GUI$SoftwareSettings.save(OpenBCI_GUI.java:13469)
+	at OpenBCI_GUI$3.run(OpenBCI_GUI.java:601)
+	at java.lang.Thread.run(Thread.java:748)

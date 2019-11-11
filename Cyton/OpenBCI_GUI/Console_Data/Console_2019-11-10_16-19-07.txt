@@ -1,0 +1,8 @@
+Console Log Started at Local Time: 2019-11-10_16-19-07
+Screen Resolution: 2560 X 1080
+Welcome to the Processing-based OpenBCI GUI!
+For more information, please visit: https://openbci.github.io/Documentation/docs/06Software/01-OpenBCISoftware/GUIDocs
+Launching application from local data dir
+OpenBCI_GUI: hubStart: OS Detected: Windows
+SHUTDOWN HOOK
+SHUTDOWN HUB

@@ -1,0 +1,87 @@
+{
+  "settings": {
+    "Current Layout": 4,
+    "Framerate": 1,
+    "Expert Mode": false,
+    "Notch": 0,
+    "Accelerometer": true,
+    "Bandpass Filter": 3,
+    "Time Series Vert Scale": 3,
+    "Time Series Horiz Scale": 2
+  },
+  "widget": {
+    "Widget_0": 4,
+    "Widget_2": 9,
+    "Widget_8": 3
+  },
+  "dataInfo": {
+    "Data Source": 3,
+    "Channels": 8
+  },
+  "fft": {
+    "FFT_LogLin": 0,
+    "FFT_Max Freq": 2,
+    "FFT_Filter": 0,
+    "FFT_Max uV": 2,
+    "FFT_Smoothing": 3
+  },
+  "accelerometer": {
+    "Accelerometer Vert Scale": 0,
+    "Accelerometer Horiz Scale": 0
+  },
+  "focus": {
+    "Focus_keypress": 0,
+    "Focus_theme": 0
+  },
+  "networking": {"Protocol": 3},
+  "headplot": {
+    "HP_smoothing": 3,
+    "HP_intensity": 2,
+    "HP_polarity": 0,
+    "HP_contours": 0
+  },
+  "version": {
+    "settings": "1.0.0",
+    "gui": "v4.1.3"
+  },
+  "channelSettings": [
+    {
+      "Channel_Number": 1,
+      "Active": 1
+    },
+    {
+      "Channel_Number": 2,
+      "Active": 1
+    },
+    {
+      "Channel_Number": 3,
+      "Active": 1
+    },
+    {
+      "Channel_Number": 4,
+      "Active": 1
+    },
+    {
+      "Channel_Number": 5,
+      "Active": 1
+    },
+    {
+      "Channel_Number": 6,
+      "Active": 1
+    },
+    {
+      "Channel_Number": 7,
+      "Active": 1
+    },
+    {
+      "Channel_Number": 8,
+      "Active": 1
+    }
+  ],
+  "emg": {
+    "EMG_creepspeed": 3,
+    "EMG_minuV": 1,
+    "EMG_uVlimit": 2,
+    "EMG_smoothing": 4
+  }
+}
