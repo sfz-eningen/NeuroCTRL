@@ -1,10 +1,11 @@
-import .configparser
+import importlib.util
+ibd = ""
+for x in __file__.split("\\")[:-2]:
+  ibd = f"{ibd}{x}\\"
+spec = importlib.util.spec_from_file_location("pwatcher", f"{ibd}\\basic_libs\\general.py"); gen = importlib.util.module_from_spec(spec); spec.loader.exec_module(gen); pwatcher = gen.pwatcher
 
-class Config():
-  files = ["board.ini", "neural.ini", "ports.ini", "settings.ini"]
-  def __init__(self):
-    config = configparser.ConfigParser()
-    for x in self.files:
-      config.read(x)
-      pass
+config = pwatcher("Cyton.config")
+# IMPORTS
+from .configparser import Config
     
+config.eof()

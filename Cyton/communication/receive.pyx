@@ -1,10 +1,7 @@
 # IMPORTS
-import importlib.util
-ibd = ""
-for x in __file__.split("\\")[:-2]:
-  ibd = f"{ibd}{x}\\"
-spec = importlib.util.spec_from_file_location("pwatcher", f"{ibd}\\basic_libs\\general.py"); gen = importlib.util.module_from_spec(spec); spec.loader.exec_module(gen); pwatcher = gen.pwatcher
-from .gData import *
+from basic_libs import *
+i = iwatcher(__file__)
+from communication import gData
 import logging
 import threading
 from threading import Thread
@@ -62,7 +59,6 @@ class Looper(Thread):
             
   def run(self): 
     """Collector Loop"""
-    t = time.time()
     try: 
       while True: 
         dat = self.stream.read()
@@ -70,7 +66,7 @@ class Looper(Thread):
         self.prog.append(dat)
     except: 
       # Stop Message
-      print(f'\n\n\x1B[1;31mThread "{self.name}" has been stopped!\n\x1B[1;33m  RUNTIME: {round((time.time()-t)*100)/100}s\n  stream-info:\n\t{self.stream}\n\x1B[0m') 
+      print(f'\n\n\x1B[1;31mThread "{self.name}" has been stopped!\n\x1B[1;33m  stream-id:\n\t{self.stream}\n\x1B[0m') 
           
   def get_id(self): 
     """returns id of the respective thread"""
@@ -110,9 +106,9 @@ class Stream():
     self.name = f"S{self.idd}P{self.protocol}"
     del port, protocol, bufs, host
     if self.protocol == 1:
-      self.handle = getUDP(host=self.host, port=self.port, buff=1024*16)
+      self.handle = gData.getUDP(host=self.host, port=self.port, buff=1024*16)
     elif self.protocol == 2:
-      self.handle = getTCP(host=self.host, port=self.port, buff=1024*16)
+      self.handle = gData.getTCP(host=self.host, port=self.port, buff=1024*16)
     else:
       raise ProtocolUnknown(f"Unknown Protocol: '{self.protocol}'")
   # FUNCTIONS
@@ -131,7 +127,7 @@ class Stream():
     """
     self.th.raiseexception()
     time.sleep(0.1)
-    print(f'\n\n\x1B[1;31mStream "{self.name}" has been stopped!\n\x1B[1;33m  stream-info:\n\t{self.handle}\n\x1B[0m') 
+    print(f'\n\n\x1B[1;31mStream "{self.name}" has been stopped!\n\x1B[1;33m  stream-id:\n\t{self.handle}\n\x1B[0m') 
   def get(self):
     while self.th.prog == []:
       pass
@@ -177,3 +173,4 @@ class AutoStream():
       \tself.th.raiseexception()
     """
     self.s.stop()
+i.eof()

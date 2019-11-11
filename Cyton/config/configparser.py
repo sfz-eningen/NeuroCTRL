@@ -1358,3 +1358,9 @@ class ConverterMapping(MutableMapping):
 
     def __len__(self):
         return len(self._data)
+
+class Config():
+  files = ["board.ini", "neural.ini", "ports.ini", "settings.ini"]
+  def __init__(self):
+    config = ConfigParser()
+    config.read(self.files)

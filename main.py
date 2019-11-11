@@ -1,5 +1,8 @@
+# WATCHDOG
+from Cyton.basic_libs import *
+w = fwatcher(__file__)
 # IMPORTS
-from __init__ import *
+from Cyton import *
 # SCRIPT
 try:
   SectionBanner("MAIN", 0)
@@ -13,4 +16,4 @@ try:
     SectionBanner("MAIN", 1)
     s1.stop()
 finally: 
-  pass
+  w.eof()

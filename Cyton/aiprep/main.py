@@ -1,5 +1,3 @@
-from communication import Stream
-
 class AIStream():
   plist = {
     "band": 12345,
