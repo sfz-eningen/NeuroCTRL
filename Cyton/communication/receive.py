@@ -1,4 +1,6 @@
 # IMPORTS
+from basic_libs import *
+i = iwatcher(__file__)
 from communication import gData
 import logging
 import threading
@@ -12,17 +14,19 @@ import random
 def bprepr(data):
   bold = "\x1B[1m"
   clear = "\x1B[0m"
-  nstr = ["alpha", "beta", "gamma", "delta", "theta"]
-  sys.stdout.write(f"{bold}    ")
+  nstr = ["delta", "theta", "alpha", "beta", "gamma"]
+  cstr = ["35;2;1", "33;2;1"]
+  sys.stdout.write(f"{bold} ")
   for x in nstr:
     sys.stdout.write(str(x)[0:8].ljust(8) + " ")
   dt = data["data"]
   sys.stdout.write(clear)
   for x in dt:
-    # sys.stdout.write(f"\n{bold}" + str(dt.index(x)+1).rjust(3) + f" {clear}")
-    sys.stdout.write("\n    ")
+    sys.stdout.write("\n")
+    if round(dt.index(x)/2)*2 == dt.index(x): stt = cstr[0] 
+    else: stt = cstr[1]
     for y in x:
-      sys.stdout.write(str(y)[0:8].ljust(8) + " ")
+      sys.stdout.write("\x1B[" + stt + "m " + str(y)[0:8].ljust(8) + clear + "")
   sys.stdout.write("\n\n")
 
 # CLASSES
@@ -70,7 +74,7 @@ class Looper(Thread):
       if thread is self: 
         return id
   
-  def raise_exception(self): 
+  def raiseexception(self): 
     """Internal stop function."""
     thread_id = self.get_id() 
     res = ctypes.pythonapi.PyThreadState_SetAsyncExc(thread_id, 
@@ -88,17 +92,13 @@ class Stream():
   Usage:\n
     \tStream(port[, protocol, bufs, host])\n
   Returns:\n
-    \tself():    None\n
-    \t.start():  None\n
-    \t.stop():   None\n
-    \t.read():   <generator object Stream.read>\n
+    \tself():    None
+    \t.start():  None
+    \t.stop():   None
+    \t.read():   <generator object Stream.read>
   """
   # VARIABLES
-  port, protocol, bufs, host = 0, 1, 200, "127.0.0.1"
-  name = ""
-  idd = 0
-  handle = None
-  active = 1
+  port, protocol, bufs, host, name, idd, handle, active = 0, 1, 200, "127.0.0.1", "", 0, None, 1
   # INIT
   def __init__(self, port, protocol=1, bufs=200, host="127.0.0.1"):
     self.port, self.protocol, self.bufs, self.host = port, protocol, bufs, host
@@ -113,11 +113,19 @@ class Stream():
       raise ProtocolUnknown(f"Unknown Protocol: '{self.protocol}'")
   # FUNCTIONS
   def start(self):
+    """
+    Start the Stream-Thread:\n
+      \tLooper(f"L{self.idd}P{self.protocol}", self.q, self.handle)
+    """
     self.q = Queue()
     self.th = Looper(f"L{self.idd}P{self.protocol}", self.q, self.handle)
     self.th.start()
   def stop(self):
-    self.th.raise_exception()
+    """
+    Stop the Stream-Thread:\n
+      \tself.th.raiseexception()
+    """
+    self.th.raiseexception()
     time.sleep(0.1)
     print(f'\n\n\x1B[1;31mStream "{self.name}" has been stopped!\n\x1B[1;33m  stream-id:\n\t{self.handle}\n\x1B[0m') 
   def get(self):
@@ -127,6 +135,9 @@ class Stream():
     self.th.prog = []
     return dat
   def read(self):
+    """
+    Read the data collected by the Stream-Thread
+    """
     for x in self.get():
       try:
         yield eval(str(x)[2:-5])
@@ -134,6 +145,15 @@ class Stream():
         pass
 
 class AutoStream():
+  """
+  Automanaged Stream starter: \n
+  Usage:\n
+    \tAutoStream({band|fft|focus})
+  Returns:\n
+    \tself:\tNone
+    \tstop:\tNone
+    \tread:\t<generator object Stream.read>
+  """
   plist = {
     "band": 12345,
     "fft": 12346,
@@ -143,6 +163,14 @@ class AutoStream():
     self.s = Stream(self.plist[dtype])
     self.s.start()
   def read(self):
+    """
+    Read the data collected by the Stream-Thread
+    """
     return self.s.read()
   def stop(self):
+    """
+    Stop the Stream-Thread:\n
+      \tself.th.raiseexception()
+    """
     self.s.stop()
+i.eof()
