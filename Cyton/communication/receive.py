@@ -15,6 +15,9 @@ import sys
 import random
 # FUNCTIONS
 def bprepr(data):
+  """
+  Displays Band-Power data
+  """
   bold = "\x1B[1m"
   clear = "\x1B[0m"
   nstr = ["delta", "theta", "alpha", "beta", "gamma"]
