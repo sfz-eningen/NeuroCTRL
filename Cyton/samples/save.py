@@ -3,10 +3,23 @@ import time
 
 
 class SWriter(): 
-    dirc = __file__.replace(os.path.basename(__file__), "")
+    """
+    ## Sample Writer
+    ### Usage (Python 3.x.x):
+    ```
+    >>> s = SWriter()
+    >>> s.write(wvar) # Write to File
+    >>> type(wvar)
+    str
+    ```
+    """
+    # Variables
+    dirc = __file__.replace(
+        os.path.basename(__file__), "")
     sdir = f"{dirc}samples\\"
     i = 0
     f = None
+
     def __init__(self, sname):
         self.sdir = self.sdir + sname
         print("Output Folder:", self.sdir)
@@ -14,7 +27,8 @@ class SWriter():
             try:
                 os.mkdir(self.sdir)
             except OSError:
-                print("Creation of the directory %s failed" % self.sdir)
+                print("Creation of the directory %s failed"
+                 % self.sdir)
         self.sname = sname
         self.cnf()
     # Write Data to file
@@ -29,7 +43,7 @@ class SWriter():
             self.f.close()
         except:
             pass
-        name = f"{self.sdir}\{self.sname}_{time.time()}.smp"
+        name = f"{self.sdir}\\{self.sname}_{time.time()}.smp"
         self.f = open(name, "w")
         self.i = 0
         print("\n", name)

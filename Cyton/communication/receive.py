@@ -40,18 +40,18 @@ class Looper(Thread):
   """
   Thread to read and collect OpenBCI-GUI data.\n
   Usage:\n
-    \tLooper(name, q, stream)\n
+   >>> Looper(name, q, stream)\n
   How to read:\n
-    \tl = Looper("L1", Queue(), s)
-    \t[...]
-    \tdef read():
-    \t  while l.prog == []:
-    \t    pass
-    \t  d = l.prog
-    \t  l.prog = []
-    \t  return d
-    \t[...]
-    \tdata = read() 
+    >>> l = Looper("L1", Queue(), s)
+   >>> [...]
+   >>> def read():
+   >>>   while l.prog == []:
+   >>>     pass
+   >>>   d = l.prog
+   >>>   l.prog = []
+   >>>   return d
+   >>> [...]
+   >>> data = read() 
   """
   # VARIABLES
   prog = []
@@ -96,12 +96,12 @@ class Stream():
   """
   Data Stream Element to receive OpenBCI-GUI data.\n
   Usage:\n
-    \tStream(port[, protocol, bufs, host])\n
+   >>> Stream(port[, protocol, bufs, host])\n
   Returns:\n
-    \tself():    None
-    \t.start():  None
-    \t.stop():   None
-    \t.read():   <generator object Stream.read>
+   >>> self():    None
+   >>> .start():  None
+   >>> .stop():   None
+   >>> .read():   <generator object Stream.read>
   """
   # VARIABLES
   port, protocol, bufs, host, name, idd, handle, active = 0, 1, 200, "127.0.0.1", "", 0, None, 1
@@ -121,7 +121,7 @@ class Stream():
   def start(self):
     """
     Start the Stream-Thread:\n
-      \tLooper(f"L{self.idd}P{self.protocol}", self.q, self.handle)
+     >>> Looper(f"L{self.idd}P{self.protocol}", self.q, self.handle)
     """
     self.q = Queue()
     self.th = Looper(f"L{self.idd}P{self.protocol}", self.q, self.handle)
@@ -129,7 +129,7 @@ class Stream():
   def stop(self):
     """
     Stop the Stream-Thread:\n
-      \tself.th.raiseexception()
+     >>> self.th.raiseexception()
     """
     self.th.raiseexception()
     time.sleep(0.1)
@@ -154,11 +154,11 @@ class AutoStream():
   """
   Automanaged Stream starter: \n
   Usage:\n
-    \tAutoStream({band|fft|focus})
+   >>> AutoStream({band|fft|focus})
   Returns:\n
-    \tself:\tNone
-    \tstop:\tNone
-    \tread:\t<generator object Stream.read>
+   >>> self:\tNone
+   >>> stop:\tNone
+   >>> read:\t<generator object Stream.read>
   """
   plist = {
     "band": 12345,
@@ -176,6 +176,6 @@ class AutoStream():
   def stop(self):
     """
     Stop the Stream-Thread:\n
-      \tself.th.raiseexception()
+     >>> self.th.raiseexception()
     """
     self.s.stop()
