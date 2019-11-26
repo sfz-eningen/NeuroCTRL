@@ -13,12 +13,16 @@ try:
   from .config import *
   from .communication import AutoStream, bprepr
   from .aiprep import AIStream
+  from .samples import *
+  from .cli import *
 except:
   from basic_libs import *
   from basic_libs.general import *
   from config import *
   from communication import AutoStream, bprepr
   from aiprep import AIStream
+  from samples import *
+  from cli import *
 import sys
 conf = Config()
 Cyton.eof()
