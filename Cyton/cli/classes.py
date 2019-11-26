@@ -1,29 +1,21 @@
 ### INFO AND LICENSING ###
 # This code is licensed under the GNU GPL V3.
-# You may use this script or it´s contents as long as you credit the author by keeping this header intact.
+# You may use this script or it´s contents as long as this header is left intact or you credit the author.
 #             © NeuroCTRL 2019
 # Author:     Frederik Beimgraben
 # Last edit:  13.11.2019
-# Purpose:    This script is used to display collected EEG-Data.
+# Purpose:    This script is used to display collected EEG-Data
 ###
 # IMPORTS
+from mam import *
 import os
 import time
-from mam import waclean, SectionBanner, inp
-from __init__ import AutoStream, SWriter, bprepr, sys
+from __init__ import *
 # SCRIPT
 
 
 class ncCLI():
     def __init__(self):
-        """
-        ## Command Line Interface.
-        ### Usage (Python 3.x.x):
-        ```
-        >>> c = ncCLI()
-        >>> c.start() # Start CLI UI
-        ```
-        """
         return None
 
     def UI(self):
