@@ -13,26 +13,28 @@ from mam import waclean, SectionBanner, inp
 from __init__ import AutoStream, SWriter, bprepr, sys
 # SCRIPT
 
-
 class ncCLI():
-    def __init__(self):
+    st = []
+    def __init__(self, name):
         """
         ## Command Line Interface.
         ### Usage (Python 3.x.x):
         ```
-        >>> c = ncCLI()
-        >>> c.start() # Start CLI UI
+        \t c = ncCLI()
+        \t c.start() # Start CLI UI
         ```
         """
+        self.name = name
         return None
 
     def UI(self):
         s1 = AutoStream("band")
         # ini()
-        w = SWriter(sys.argv[1])#
+        w = SWriter(self.name)
         try:
             while 1:
                 for e in [s1.read()]:
+                    self.st.append(e)
                     for x in e:
                         # waclean()
                         print("\x1B[7;2H")
@@ -51,7 +53,7 @@ class ncCLI():
             SectionBanner("IMPORT")
             sys.stdout.write("\x1B[6;2H")
             SectionBanner("DISPLAY")
-            UI()
+            self.UI()
         except:
             pass
         if inp() in ["RES", "res", "1", "r", "resume", "Resume", "RESUME"]:

@@ -1,7 +1,15 @@
-import config
+from flask import Flask  
+from flaskwebgui import FlaskUI   # get the FlaskUI class
+from flask_restful import Resource, Api
 
-conf = config.Config()
+app = Flask(__name__)
+api = Api(app)
 
-from mam import *
+class HelloWorld(Resource):
+    def get(self):
+        return {'hello': 'world'}
 
-waclean()
+api.add_resource(HelloWorld, '/')
+
+if __name__ == '__main__':
+    app.run(debug=True)

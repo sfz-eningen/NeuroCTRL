@@ -8,6 +8,5 @@
 ###
 # IMPORTS
 from __init__ import ncCLI
-
-c = ncCLI()
-c.start() 
+c = ncCLI("Session1")
+c.start()
