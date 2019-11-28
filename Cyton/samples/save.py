@@ -47,5 +47,3 @@ class SWriter():
         self.f = open(name, "w")
         self.i = 0
         print("\n", name)
-
-w = SWriter("Session1")

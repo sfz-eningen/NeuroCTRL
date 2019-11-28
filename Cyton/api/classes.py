@@ -2,8 +2,8 @@ from flask import Flask
 from flaskwebgui import FlaskUI   # get the FlaskUI class
 from flask_restful import Resource, Api
 from threading import Thread
-
-
+import threading
+import ctypes
 # class RCase(Resource):
 #     def get(self):
 #         return {"focused": 0, "detect": 0}
@@ -22,22 +22,43 @@ from threading import Thread
 #         self.api.add_resource(RCase, '/detector')
 #     def start(self):
 #         self.app.run()
+import random
+
+def rename(newname):
+    def decorator(f):
+        f.__name__ = newname
+        return f
+    return decorator
 
 class flaskAPI(Thread):
-    def __init__(self, handle):
+    """
+    API Thread to send data via {Host}:5000/
+    Usage:
+    >>> flaskAPI(handle [, local=0, page="/"])
+    """
+    handle = []
+    def __init__(self, local=0):
         Thread.__init__(self)
-        self.handle = handle
+        self.local = local
         self.app = Flask(__name__)
-        @self.app.route("/")
+    def addR(self, handle, page="/"):
+        self.handle.append(handle)
+        @self.app.route(page)
+        @rename(str(random.randint(1000000, 9999999)))
         def SendData():
-            st = self.handle.read()
+            st = self.handle[len(self.handle)-1].read()
             so = []
             for x in st:
                 so.append(x["data"])
             return {"data": so}
 
     def run(self):
-        self.app.run(host= '0.0.0.0')
+        try:
+            if self.local == "0": host='0.0.0.0'
+            else: host="127.0.0.1"
+            self.app.run(host=host)
+        except:
+            print(f'\n\n\x1B[1;31mAPI Thread has been stopped!\n\x1B[0m') 
 
     def get_id(self): 
         """returns id of the respective thread"""

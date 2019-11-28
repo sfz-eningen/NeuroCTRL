@@ -48,8 +48,8 @@ class pwatcher():
         del rows
         self.t, self.file = time.time(), highlight_module(name, typ=typ)
     def eof(self):
-        co = f"""\x1B[3;2H\x1B[33;1m{self.file}\x1B[34;1m:\x1B[32;1mEOI\n          \x1B[32;1mImport took: {round(100*(time.time()-self.t))/100}s\x1B[0m\n"""
-        sys.stdout.write("\x1B[3;9H" + "".ljust(self.columns - 1, " ") + "\n" + "".ljust(self.columns - 1, " "))
+        co = f""" \x1B[33;1m{self.file}\x1B[34;1m:\x1B[32;1mEOI\n          \x1B[32;1mImport took: {round(100*(time.time()-self.t))/100}s\x1B[0m\n\n"""
+        sys.stdout.write("".ljust(self.columns - 1, " ") + "\n" + "".ljust(self.columns - 1, " "))
         sys.stdout.write(co)
 
 # def SectionBanner(section, status):
