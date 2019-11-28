@@ -7,6 +7,9 @@
 # Purpose:    This script is used to define the chronological order of the called classes and functions.
 ###
 # IMPORTS
-from __init__ import ncCLI
-c = ncCLI("Session1")
+from __init__ import ncCLI, flaskAPI, AutoStream
+from threading import Thread 
+c = AutoStream("band")
+w = flaskAPI(c)
+w.start()
 c.start()

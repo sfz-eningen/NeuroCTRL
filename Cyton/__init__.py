@@ -15,7 +15,7 @@ try:
   from .aiprep import AIStream
   from .samples import *
   from .cli import *
-  # from .api import *
+  from .api import *
 except:
   from basic_libs import *
   from basic_libs.general import *
@@ -24,7 +24,7 @@ except:
   from aiprep import AIStream
   from samples import *
   from cli import *
-  # from api import *
+  from api import *
 import sys
 conf = Config()
 Cyton.eof()

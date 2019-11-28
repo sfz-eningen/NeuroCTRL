@@ -1,10 +1,11 @@
-# IMPORTS
+# IMPORTLIB
 import importlib.util
 ibd = ""
 for x in __file__.split("\\")[:-2]:
   ibd = f"{ibd}{x}\\"
 spec = importlib.util.spec_from_file_location("pwatcher", f"{ibd}\\basic_libs\\general.py"); gen = importlib.util.module_from_spec(spec); spec.loader.exec_module(gen); pwatcher = gen.pwatcher
 from .gData import *
+# NORMAL IMPORTS
 import logging
 import threading
 from threading import Thread
@@ -23,10 +24,13 @@ def bprepr(data):
   nstr = ["delta", "theta", "alpha", "beta", "gamma"]
   cstr = ["35;2;1", "33;2;1"]
   sys.stdout.write(f"{bold} ")
+
   for x in nstr:
     sys.stdout.write(str(x)[0:8].ljust(8) + " ")
+  
   dt = data["data"]
   sys.stdout.write(clear)
+
   for x in dt:
     sys.stdout.write("\n")
     if round(dt.index(x)/2)*2 == dt.index(x): stt = cstr[0] 
@@ -57,7 +61,7 @@ class Looper(Thread):
   prog = []
   # INIT
   def __init__(self, name, q, stream): 
-    Thread.__init__(self) 
+    Thread.__init__(self)
     self.name = name 
     self.q = q
     self.stream = stream

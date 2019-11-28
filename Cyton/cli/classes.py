@@ -12,7 +12,7 @@ import time
 from mam import waclean, SectionBanner, inp
 from __init__ import AutoStream, SWriter, bprepr, sys
 # SCRIPT
-
+st = []
 class ncCLI():
     st = []
     def __init__(self, name):
@@ -31,6 +31,15 @@ class ncCLI():
         s1 = AutoStream("band")
         # ini()
         w = SWriter(self.name)
+        while 1:
+                for e in [s1.read()]:
+                    self.st.append(e)
+                    for x in e:
+                        # waclean()
+                        print("\x1B[7;2H")
+                        bprepr(x)
+                        w.write(x["data"])
+                        # time.sleep(.9)
         try:
             while 1:
                 for e in [s1.read()]:
@@ -48,6 +57,11 @@ class ncCLI():
             time.sleep(0.2)
 
     def start(self):
+        os.system("cls")
+        SectionBanner("IMPORT")
+        sys.stdout.write("\x1B[6;2H")
+        SectionBanner("DISPLAY")
+        self.UI()
         try:
             os.system("cls")
             SectionBanner("IMPORT")

@@ -43,7 +43,7 @@ class SWriter():
             self.f.close()
         except:
             pass
-        name = f"{self.sdir}\\{self.sname}_{time.time()}.smp"
+        name = f"{self.sdir}\{self.sname}_{time.time()}.smp"
         self.f = open(name, "w")
         self.i = 0
         print("\n", name)
