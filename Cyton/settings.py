@@ -4,7 +4,7 @@ class Settings():
             "function": "AutoStream",
             "data": [
                 {"name": "BandPower", "api": True, "type": "band", "page": "/band_power"},
-                {"name": "BandPower", "api": True, "type": "focus", "page": "/focus"}
+                {"name": "Focus", "api": True, "type": "fft", "page": "/fft"}
             ]
         },
 

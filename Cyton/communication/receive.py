@@ -69,6 +69,7 @@ class Looper(Thread):
   def run(self): 
     """Collector Loop"""
     t = time.time()
+    sys.stdout.write(f'\n\x1B[1;35mThread "{self.name}" has been started!\n\x1B[1;34m  RUNTIME: {round((time.time()-t)*100)/100}s\n  stream-info:\n\t{self.stream}\x1B[0m\n') 
     try: 
       while True: 
         dat = self.stream.read()
@@ -76,7 +77,7 @@ class Looper(Thread):
         self.prog.append(dat)
     except: 
       # Stop Message
-      print(f'\n\n\x1B[1;31mThread "{self.name}" has been stopped!\n\x1B[1;33m  RUNTIME: {round((time.time()-t)*100)/100}s\n  stream-info:\n\t{self.stream}\x1B[0m') 
+      sys.stdout.write(f'\n\n\x1B[1;31mThread "{self.name}" has been stopped!\n\x1B[1;33m  RUNTIME: {round((time.time()-t)*100)/100}s\n  stream-info:\n\t{self.stream}\x1B[0m') 
           
   def get_id(self): 
     """returns id of the respective thread"""
@@ -130,6 +131,7 @@ class Stream():
     self.q = Queue()
     self.th = Looper(f"L{self.idd}P{self.protocol}", self.q, self.handle)
     self.th.start()
+    sys.stdout.write(f'\n\x1B[1;35mStream "{self.name}" has been started!\n\x1B[1;34m  stream-info:\n\t{self.handle}\x1B[0m\n') 
   def stop(self):
     """
     Stop the Stream-Thread:\n
@@ -137,7 +139,7 @@ class Stream():
     """
     self.th.raiseexception()
     time.sleep(0.1)
-    print(f'\n\n\x1B[1;31mStream "{self.name}" has been stopped!\n\x1B[1;33m  stream-info:\n\t{self.handle}\x1B[0m') 
+    sys.stdout.write(f'\n\n\x1B[1;31mStream "{self.name}" has been stopped!\n\x1B[1;33m  stream-info:\n\t{self.handle}\x1B[0m') 
   def get(self):
     while self.th.prog == []:
       pass
@@ -170,6 +172,7 @@ class AutoStream():
     "focus": 12347
     }
   def __init__(self, dtype):
+    self.dtype = dtype
     self.s = Stream(self.plist[dtype])
     self.s.start()
   def read(self):

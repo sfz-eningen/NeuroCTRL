@@ -4,24 +4,7 @@ from flask_restful import Resource, Api
 from threading import Thread
 import threading
 import ctypes
-# class RCase(Resource):
-#     def get(self):
-#         return {"focused": 0, "detect": 0}
-
-
-
-# class webAPI(): 
-#     # VARIABLES
-#     name, app, api, handle = None, None, None, None
-#     # Functions
-#     def __init__(self, handle, name="CLI"): 
-#         self.handle = handle
-#         self.name = name
-#         self.app = Flask(__name__)
-#         self.api = Api(self.app)
-#         self.api.add_resource(RCase, '/detector')
-#     def start(self):
-#         self.app.run()
+import sys
 import random
 
 def rename(newname):
@@ -36,29 +19,37 @@ class flaskAPI(Thread):
     Usage:
     >>> flaskAPI(handle [, local=0, page="/"])
     """
-    handle = []
+    pagesL = {}
     def __init__(self, local=0):
         Thread.__init__(self)
         self.local = local
         self.app = Flask(__name__)
-    def addR(self, handle, page="/"):
-        self.handle.append(handle)
-        @self.app.route(page)
-        @rename(str(random.randint(1000000, 9999999)))
-        def SendData():
-            st = self.handle[len(self.handle)-1].read()
+        @self.app.route("/<page>")
+        def Send(page):
             so = []
-            for x in st:
-                so.append(x["data"])
-            return {"data": so}
+            try:
+                for x in self.pagesL['/'+page]['handle'].read():
+                    so.append(x["data"])
+                return {"response": 200, "type": self.pagesL['/'+page]['handle'].dtype,"data": so}
+            except:
+                return {"response": 404, "data": 'NOT FOUND'}
+
+    def addR(self, handle, page="/"):
+        self.pagesL[page] = {"handle": handle}
+        vt = random.randint(100000, 999999)
+    
 
     def run(self):
+        host="0.0.0.0"
+        # if self.local == "0": host='0.0.0.0'
+        # else: host="127.0.0.1"
+        sys.stdout.write(f'\n\x1B[1;35mAPI-Thread has been started!\n\x1B[0m\t\x1B[34;1mHOST={host}\n\n\n\x1B[0m') 
+        sys.stdout.flush()
         try:
-            if self.local == "0": host='0.0.0.0'
-            else: host="127.0.0.1"
             self.app.run(host=host)
         except:
-            print(f'\n\n\x1B[1;31mAPI Thread has been stopped!\n\x1B[0m') 
+            sys.stdout.write(f'\n\n\x1B[1;31mAPI-Thread has been stopped!\n\x1B[0m\t\x1B[33mHOST={host}\n\n\x1B[0m') 
+            sys.stdout.flush()
 
     def get_id(self): 
         """returns id of the respective thread"""
