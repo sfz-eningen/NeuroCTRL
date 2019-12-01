@@ -89,6 +89,7 @@ cc = {
         "blau": "\x1B[35m",
         "weiß": "\x1B[37m",
         "0": "\x1B[0m]"
+        "fett": "\x1B[1m"
 }
 
 class Geschwister():
