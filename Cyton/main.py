@@ -18,29 +18,28 @@ from basic_libs.general import fwatcher as fw   # IMPORT Watchdog
 f = fw(__file__)                                # CREATE Watchdog
 from settings import Settings                   # IMPORT Settings
 s = Settings()                                  # READ Settings
-from __init__ import flaskAPI, AutoStream, sys  # IMPORT Classes
+from __init__ import flaskAPI, AutoStream, sys,\
+    brainAI, dimc                               # IMPORT Classes
 import time                                     # IMPORT Time module
 from threading import Thread                    # IMPORT threading module 
 ## SCRIPT
-w = flaskAPI()  # Create WEB-API Thread object
+AI = brainAI()
+AI.train()
+
 Streams = []    # Create empty list to store AutoStream objects
 for Stream in s.Streams:
     # Create "communication.receive.AutoStream" object
     Streams.append(AutoStream(Stream["type"])) # Create and start data stream
-    # Create "api.classes.flaskAPI" object with "c" as receive handle
-    if Stream["api"] == True:                       # Only start API if stated so
-        w.addR(Streams[-1], page=Stream["page"])    # Add Streams as Resource 
-
-w.start() # Start API Thread
 
 try:                    # Wait until broke by CTRL+C
-    while 1:            # Do nothing for ever Loop to kill Threads on exit
-        time.sleep(0.2) # (Wait until broke by CTRL+C)
+    while 1:            # Do nothing for ever
+        m = []
+        for e in Streams[0].read():
+            m.append(dimc(e))
+        print(AI.analyze(m))
 except:
     for c in Streams:   # Stop Streams on exit
         c.stop()
-    w.raiseexception()  # Kill API
-    del Streams, w      # Delete left Variables
     # EOF
     time.sleep(2)
     f.eof()             # Stop Watchdog
