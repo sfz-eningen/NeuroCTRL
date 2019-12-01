@@ -22,14 +22,14 @@ from __init__ import flaskAPI, AutoStream, sys  # IMPORT Classes
 import time                                     # IMPORT Time module
 from threading import Thread                    # IMPORT threading module 
 ## SCRIPT
-w = flaskAPI() # Create WEB-API Thread object
-Streams = []
+w = flaskAPI()  # Create WEB-API Thread object
+Streams = []    # Create empty list to store AutoStream objects
 for Stream in s.Streams:
     # Create "communication.receive.AutoStream" object
     Streams.append(AutoStream(Stream["type"])) # Create and start data stream
     # Create "api.classes.flaskAPI" object with "c" as receive handle
-    if Stream["api"] == True:
-        w.addR(Streams[-1], page=Stream["page"]) # Add Resource 
+    if Stream["api"] == True:                       # Only start API if stated so
+        w.addR(Streams[-1], page=Stream["page"])    # Add Resource 
 
 w.start() # Start API Thread
 
