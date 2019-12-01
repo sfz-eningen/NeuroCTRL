@@ -29,7 +29,7 @@ for Stream in s.Streams:
     Streams.append(AutoStream(Stream["type"])) # Create and start data stream
     # Create "api.classes.flaskAPI" object with "c" as receive handle
     if Stream["api"] == True:                       # Only start API if stated so
-        w.addR(Streams[-1], page=Stream["page"])    # Add Resource 
+        w.addR(Streams[-1], page=Stream["page"])    # Add Streams as Resource 
 
 w.start() # Start API Thread
 
