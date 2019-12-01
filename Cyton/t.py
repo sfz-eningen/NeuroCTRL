@@ -81,8 +81,18 @@ hund2.pfote()
 
 print()
 
+cc = {
+        "rot": "\x1B[31m",
+        "grün": "\x1B[32m",
+        "magenta": "\x1B[34m",
+        "gelb": "\x1B[33m",
+        "blau": "\x1B[35m",
+        "weiß": "\x1B[37m",
+        "0": "\x1B[0m]"
+}
 
 class Geschwister():
+    
     name = "Bob"
     alter = 10
     nervig = True
@@ -117,3 +127,15 @@ class Geschwister():
 geschwister1 = Geschwister("Mattheo", 14, True, 1.73)
 print (f"Maximilian:\t {geschwister1.name}, Tisch decken!")
 geschwister1.tischdecken ()
+
+# \x1B[{c}m
+# 0 zurücks
+# 1 fett
+# 31 text rot
+# 32 text grün
+# 33 " gelb
+# 34 " magenta
+# 35 " blau
+# 36 "
+# 37 " w
+# 4"   hintergrund
