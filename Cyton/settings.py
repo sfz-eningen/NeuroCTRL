@@ -3,8 +3,8 @@ class Settings():
         "Streams": {
             "function": "AutoStream",
             "data": [
-                {"name": "BandPower", "api": True, "type": "band", "page": "/band_power"},
-                {"name": "Focus", "api": True, "type": "fft", "page": "/fft"}
+                {"name": "BandPower", "api": True, "type": "band", "page": "/band_power"}#,
+                #{"name": "Focus", "api": False, "type": "fft", "page": "/fft"}
             ]
         },
 

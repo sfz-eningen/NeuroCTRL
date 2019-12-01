@@ -48,7 +48,7 @@ class flaskAPI(Thread):
         try:
             self.app.run(host=host)
         except:
-            sys.stdout.write(f'\n\n\x1B[1;31mAPI-Thread has been stopped!\n\x1B[0m\t\x1B[33mHOST={host}\n\n\x1B[0m') 
+            sys.stdout.write(f'\n\n\x1B[1;31mAPI-Thread has been stopped!\n\x1B[0m\t\x1B[33;1mHOST={host}\n\n\x1B[0m') 
             sys.stdout.flush()
 
     def get_id(self): 
