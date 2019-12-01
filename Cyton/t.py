@@ -35,7 +35,11 @@ class Hund():
     def __init__(self, name, alter, rasse, tricks={}):
         if not tricks == {}:
             for x in tricks:
-                self.tricks[x] = tricks[x]
+                if x in self.tricks:
+                    self.tricks[x] = tricks[x]
+                else:
+                    print("wuff?")
+
         self.name = name
         self.alter = alter
         self.rasse = rasse
@@ -74,3 +78,5 @@ print(f"Herrchen:\t {hund2.name}! Bellen!")
 hund2.bellen()
 print(f"Herrchen:\t {hund2.name}! Pfote!")
 hund2.pfote()
+
+print()
