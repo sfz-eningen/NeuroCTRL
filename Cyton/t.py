@@ -1,6 +1,6 @@
-"""
-Beispiele, um Maximilian Python beizubringen
-"""
+# """
+# Beispiele, um Maximilian Python beizubringen
+# """
 
 
 import random
@@ -80,3 +80,40 @@ print(f"Herrchen:\t {hund2.name}! Pfote!")
 hund2.pfote()
 
 print()
+
+
+class Geschwister():
+    name = "Bob"
+    alter = 10
+    nervig = True
+    groesse = 1.75
+    skills = {"Tisch decken": True, "Tisch abräumen": True, "zocken": True}
+
+    def __init__ (self, name, alter, nervig, groesse, skills={}):
+        if not skills == {}:
+            for x in skills:
+                if x in self.skills:
+                    self.skills[x] = skills[x]
+                else:
+                    print ("Hä, WTF?")
+
+        self.name, self.alter, self.nervig, self.groesse = name, alter, nervig, groesse
+    def tischdecken(self):
+        if random.randint(0, 1): 
+            print(f"{self.name}:\t Na meinetwegen...")
+        else:
+            print(f"{self.name}:\t Ne, keine Lust!")
+    def tischab(self):
+        if random.randint(0, 1):
+            print (f"{self.name}:\t Immer muss ich das machen!")
+        else:
+            print(f"{self.name}:\t Nein, ich muss noch was anderes machen")
+    def zocken(self):
+        if random.randint(0, 1):
+            print(f"{self.name}:\t Da habe ich immer Lust drauf!")
+        else:
+            print(f"{self.name}:\t Ich muss etwas für die Schule machen :(")
+
+geschwister1 = Geschwister("Mattheo", 14, True, 1.73)
+print (f"Maximilian:\t {geschwister1.name}, Tisch decken!")
+geschwister1.tischdecken ()
