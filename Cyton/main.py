@@ -14,13 +14,13 @@ To get classes only:
 >>> from __init__ import *
 """
 ## IMPORTS
-from basic_libs.general import fwatcher as fw
-f = fw(__file__)
-from settings import Settings
-s = Settings()
-from __init__ import flaskAPI, AutoStream, sys
-import time
-from threading import Thread
+from basic_libs.general import fwatcher as fw   # IMPORT Watchdog
+f = fw(__file__)                                # CREATE Watchdog
+from settings import Settings                   # IMPORT Settings
+s = Settings()                                  # READ Settings
+from __init__ import flaskAPI, AutoStream, sys  # IMPORT Classes
+import time                                     # IMPORT Time module
+from threading import Thread                    # IMPORT threading module 
 ## SCRIPT
 w = flaskAPI() # Create WEB-API Thread object
 Streams = []
