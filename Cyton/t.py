@@ -4,82 +4,82 @@
 
 
 import random
-import time
-import math
-l = ["Hello World", "I am here", "I am Groot", "Frederik ist cool"]
+# import time
+# import math
+# l = ["Hello World", "I am here", "I am Groot", "Frederik ist cool"]
 
-def scramble(lt):
-    ltt = list(lt)
-    for i in range(len(ltt)):
-        v = random.choice(ltt)
-        yield v
-        ltt.remove(v)
+# def scramble(lt):
+#     ltt = list(lt)
+#     for i in range(len(ltt)):
+#         v = random.choice(ltt)
+#         yield v
+#         ltt.remove(v)
 
-x = range(361)
-def singen(h):
-    for j in h:
-        yield math.sin(j)
+# x = range(361)
+# def singen(h):
+#     for j in h:
+#         yield math.sin(j)
+3
+# def f(x):
+#     return pow(x, 2)
 
-def f(x):
-    return pow(x, 2)
+# # for h in range(10):
+# #     print(f(h))
 
-# for h in range(10):
-#     print(f(h))
+# class Hund():
+#     name = "Strolch"
+#     alter = 3.5
+#     rasse = "Dalmatiner"
+#     tricks = {"pfote": True, "maennchen": True, "bellen": True, "typ": "wuff"}
 
-class Hund():
-    name = "Strolch"
-    alter = 3.5
-    rasse = "Dalmatiner"
-    tricks = {"pfote": True, "maennchen": True, "bellen": True, "typ": "wuff"}
+#     def __init__(self, name, alter, rasse, tricks={}):
+#         if not tricks == {}:
+#             for x in tricks:
+#                 if x in self.tricks:
+#                     self.tricks[x] = tricks[x]
+#                 else:
+#                     print("wuff?")
 
-    def __init__(self, name, alter, rasse, tricks={}):
-        if not tricks == {}:
-            for x in tricks:
-                if x in self.tricks:
-                    self.tricks[x] = tricks[x]
-                else:
-                    print("wuff?")
+#         self.name = name
+#         self.alter = alter
+#         self.rasse = rasse
+#         typ = f'{self.tricks["typ"]} '
+#         print(f"{name}:\t\t * {random.randint(1,3)*typ}*")
+#     def bellen(self):
+#         if self.tricks["bellen"] == True:
+#             typ = f'{self.tricks["typ"]} '
+#             print(f"{self.name}:\t\t * {typ}*")
+#         else:
+#             typ = f'{self.tricks["typ"]} '
+#             print(f"{self.name}:\t\t * {random.randint(1,3)*typ}*")
+#     def pfote(self):
+#         if self.tricks["pfote"] == True:
+#             print(f"{self.name}:\t\t * pfote *")
+#         else:
+#             typ = f'{self.tricks["typ"]} '
+#             print(f"{self.name}:\t\t * {random.randint(1,3)*typ}*")
+#     def maennchen(self):
+#         if self.tricks["maennchen"] == True:
+#             print(f"{self.name}:\t\t * maennchen *")
+#         else:
+#             typ = f'{self.tricks["typ"]} '
+#             print(f"{self.name}:\t\t * {random.randint(1,3)*typ}*")
 
-        self.name = name
-        self.alter = alter
-        self.rasse = rasse
-        typ = f'{self.tricks["typ"]} '
-        print(f"{name}:\t\t * {random.randint(1,3)*typ}*")
-    def bellen(self):
-        if self.tricks["bellen"] == True:
-            typ = f'{self.tricks["typ"]} '
-            print(f"{self.name}:\t\t * {typ}*")
-        else:
-            typ = f'{self.tricks["typ"]} '
-            print(f"{self.name}:\t\t * {random.randint(1,3)*typ}*")
-    def pfote(self):
-        if self.tricks["pfote"] == True:
-            print(f"{self.name}:\t\t * pfote *")
-        else:
-            typ = f'{self.tricks["typ"]} '
-            print(f"{self.name}:\t\t * {random.randint(1,3)*typ}*")
-    def maennchen(self):
-        if self.tricks["maennchen"] == True:
-            print(f"{self.name}:\t\t * maennchen *")
-        else:
-            typ = f'{self.tricks["typ"]} '
-            print(f"{self.name}:\t\t * {random.randint(1,3)*typ}*")
+# hund1 = Hund("Zafra", 12, "Wachtel", {"bellen": False})
+# print(f"Herrchen:\t {hund1.name}! Bellen!")
+# hund1.bellen()
+# print(f"Herrchen:\t {hund1.name}! Pfote!")
+# hund1.pfote()
 
-hund1 = Hund("Zafra", 12, "Wachtel", {"bellen": False})
-print(f"Herrchen:\t {hund1.name}! Bellen!")
-hund1.bellen()
-print(f"Herrchen:\t {hund1.name}! Pfote!")
-hund1.pfote()
+# print()
 
-print()
+# hund2 = Hund("Kiwi", 12, "Wachtel", {"pfote": False, "bellen": True, "typ": "wouuff"})
+# print(f"Herrchen:\t {hund2.name}! Bellen!")
+# hund2.bellen()
+# print(f"Herrchen:\t {hund2.name}! Pfote!")
+# hund2.pfote()
 
-hund2 = Hund("Kiwi", 12, "Wachtel", {"pfote": False, "bellen": True, "typ": "wouuff"})
-print(f"Herrchen:\t {hund2.name}! Bellen!")
-hund2.bellen()
-print(f"Herrchen:\t {hund2.name}! Pfote!")
-hund2.pfote()
-
-print()
+# print()
 
 cc = {
         "rot": "\x1B[31m",
@@ -88,9 +88,12 @@ cc = {
         "gelb": "\x1B[33m",
         "blau": "\x1B[35m",
         "weiß": "\x1B[37m",
-        "0": "\x1B[0m]"
+        "clear": "\x1B[0m",
         "fett": "\x1B[1m"
 }
+
+for x in cc: 
+    exec(f"{x} = '{cc[x]}'")
 
 class Geschwister():
     
@@ -111,9 +114,9 @@ class Geschwister():
         self.name, self.alter, self.nervig, self.groesse = name, alter, nervig, groesse
     def tischdecken(self):
         if random.randint(0, 1): 
-            print(f"{self.name}:\t Na meinetwegen...")
+            print(f"{self.name}:\t {grün}Na meinetwegen...{clear}")
         else:
-            print(f"{self.name}:\t Ne, keine Lust!")
+            print(f"{self.name}:\t {rot}Ne, keine Lust!{clear}")
     def tischab(self):
         if random.randint(0, 1):
             print (f"{self.name}:\t Immer muss ich das machen!")
@@ -121,7 +124,7 @@ class Geschwister():
             print(f"{self.name}:\t Nein, ich muss noch was anderes machen")
     def zocken(self):
         if random.randint(0, 1):
-            print(f"{self.name}:\t Da habe ich immer Lust drauf!")
+            print(f"{self.name}:\t {grün}Da habe ich immer Lust drauf!{clear}")
         else:
             print(f"{self.name}:\t Ich muss etwas für die Schule machen :(")
 
