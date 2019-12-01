@@ -2,7 +2,7 @@
 # This code is licensed under the GNU GPL V3.
 # You may use this script or it´s contents as long as you credit the author by keeping this header intact.
 #             © NeuroCTRL 2019
-git # Author:     Frederik Beimgraben, Maximilian Menzel
+# Author:     Frederik Beimgraben, Maximilian Menzel
 # Last edit:  13.11.2019
 # Purpose:    This script is used to define the chronological order of the called classes and functions.
 ###
