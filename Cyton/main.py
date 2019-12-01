@@ -33,14 +33,14 @@ for Stream in s.Streams:
 
 w.start() # Start API Thread
 
-try:
-    while 1: 
-        time.sleep(0.2)
+try:                    # Wait until broke by CTRL+C
+    while 1:            # Do nothing for ever Loop to kill Threads on exit
+        time.sleep(0.2) # (Wait until broke by CTRL+C)
 except:
-    for c in Streams:
+    for c in Streams:   # Stop Streams on exit
         c.stop()
-    w.raiseexception()
-    del Streams, w
+    w.raiseexception()  # Kill API
+    del Streams, w      # Delete left Variables
     # EOF
     time.sleep(2)
-    f.eof()
+    f.eof()             # Stop Watchdog
