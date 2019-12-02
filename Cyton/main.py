@@ -21,16 +21,19 @@ s = Settings()                                  # READ Settings
 from __init__ import flaskAPI, AutoStream, sys,\
     brainAI, dimc, TestStreamer, AII, cleanup, \
     AIIk                                        # IMPORT Classes
+from numpy import round as nround
 import time                                     # IMPORT Time module
 from threading import Thread                    # IMPORT threading module 
 ## SCRIPT
 AIIk("<CREATE AI>")
+states = ["Idle", "Focused", "Up", "Down", "Left", "Right"]
 AI = brainAI()
 AIIk("<CREATED AI>")
 AIIk("<TRAIN AI>")
 try:
     AI.train()
 except KeyboardInterrupt:
+    cleanup([], f)
     sys.exit("\n\n\x1B[31;1m" + "INTERRUPTED BY USER!\x1B[0m\n")
 AIIk("<TRAINED AI>")
 time.sleep(1)
@@ -51,7 +54,7 @@ try:                    # Wait until broke by CTRL+C
             m.append(dimc(e))
         ana = AI.analyze(m)
         for x in ana:
-            sys.stdout.write("\n" + str(x) + "  " + str(round(x)))
+            sys.stdout.write("\n" + str(x) + "  " + str(states[int(x+0.5)]))
 except KeyboardInterrupt:
     AII("\x1B[31m" + "INTERRUPTED BY USER!")
 except ValueError:
