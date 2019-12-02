@@ -73,6 +73,7 @@ class Looper(Thread):
     try: 
       while True: 
         dat = self.stream.read()
+        # print(dat)
         # self.q.put(dat)
         self.prog.append(dat)
     except: 

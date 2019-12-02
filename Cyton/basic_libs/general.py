@@ -61,3 +61,12 @@ class pwatcher():
 #     else:
 #         status = "END"
 #     print("\n\x1B[34;1m\t" + f"""---------- {section}:{status} ----------""".center(columns - 12, "-") + "\x1B[0m")
+
+def cleanup(Streams, f):
+    print("\n\x1B[34;1m" + "CLEANING UP!")
+    for c in Streams:   # Stop Streams on exit
+        c.stop()
+    # EOF
+    time.sleep(2)
+    f.eof()             # Stop Watchdog
+    sys.exit("\n\x1B[34;1m" + "CLEANED UP!\x1B[0m\n")

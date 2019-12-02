@@ -1,3 +1,12 @@
+### INFO AND LICENSING ###
+# This code is licensed under the GNU GPL V3.
+# You may use this script or it´s contents as long as you credit the author by keeping this header intact.
+#             © NeuroCTRL 2019
+# Author:     Frederik Beimgraben, Maximilian Menzel
+# Last edit:  01.12.2019
+# Purpose:    AI Initializer for the "Encephalographic Signal Analysis and Recognition Toolkit",
+#             ("ESART")
+###
 def warn(*args, **kwargs):
     pass
 import warnings
@@ -25,6 +34,8 @@ import pandas as pd
 import numpy as np
 import sys
 # Set random seed
+def AIIk(text):
+    sys.stdout.write(f"\n\x1B[33;1m{text}\x1B[0m\n".replace("<", "\x1B[32m<\x1B[33m").replace(">", "\x1B[32m>\x1B[33m"))
 def AII(text):
     sys.stdout.write(f"\n\x1B[35;1m{text}\x1B[0m\n")
 def AIN(section, text):
@@ -34,8 +45,8 @@ def AINc(section, text):
 def AINp(section="", text=""):
     sys.stdout.write(f"\t\x1B[35;1m{section}{(len('SAMPLE-PREPROCESSING')-len(section)+2)*' '}  \x1B[34;1m[\x1B[32;1mDONE\x1B[34;1m]\x1B[0m\n")
 class brainAI():
-    def __init__(self): 
-        AII("AI created!")
+    def __init__(self):
+        pass
     def train(self, file="./samples/samples.csv"):
         AII(f"Training from '{file}'...")
         AIN("SAMPLE-PREPROCESSING", f"Cleaning up samples in '{file}'...")
@@ -76,7 +87,7 @@ class brainAI():
         AINp()
         AII("AI TRAINED!\nUse {object name}.analyze({data}) to predict.")
     def analyze(self, data):
-        AII("ANALYZING...")
+        # AII("ANALYZING...")
         return self.clf.predict(data)
 
 def dimc(dct):

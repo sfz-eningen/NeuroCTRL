@@ -19,27 +19,42 @@ f = fw(__file__)                                # CREATE Watchdog
 from settings import Settings                   # IMPORT Settings
 s = Settings()                                  # READ Settings
 from __init__ import flaskAPI, AutoStream, sys,\
-    brainAI, dimc                               # IMPORT Classes
+    brainAI, dimc, TestStreamer, AII, cleanup, \
+    AIIk                                        # IMPORT Classes
 import time                                     # IMPORT Time module
 from threading import Thread                    # IMPORT threading module 
 ## SCRIPT
+AIIk("<CREATE AI>")
 AI = brainAI()
-AI.train()
-
+AIIk("<CREATED AI>")
+AIIk("<TRAIN AI>")
+try:
+    AI.train()
+except KeyboardInterrupt:
+    sys.exit("\n\n\x1B[31;1m" + "INTERRUPTED BY USER!\x1B[0m\n")
+AIIk("<TRAINED AI>")
+time.sleep(1)
+AIIk("<CREATE STREAMS>")
 Streams = []    # Create empty list to store AutoStream objects
 for Stream in s.Streams:
     # Create "communication.receive.AutoStream" object
     Streams.append(AutoStream(Stream["type"])) # Create and start data stream
+AIIk("<CREATED STREAMS>")
 
+time.sleep(1)
+
+AIIk("<READER LOOP>")
 try:                    # Wait until broke by CTRL+C
     while 1:            # Do nothing for ever
         m = []
         for e in Streams[0].read():
             m.append(dimc(e))
-        print(AI.analyze(m))
-except:
-    for c in Streams:   # Stop Streams on exit
-        c.stop()
-    # EOF
-    time.sleep(2)
-    f.eof()             # Stop Watchdog
+        ana = AI.analyze(m)
+        for x in ana:
+            sys.stdout.write("\n" + str(x) + "  " + str(round(x)))
+except KeyboardInterrupt:
+    AII("\x1B[31m" + "INTERRUPTED BY USER!")
+except ValueError:
+    AII("\x1B[31m" + "VALUE ERROR!")
+finally:
+    cleanup(Streams, f)

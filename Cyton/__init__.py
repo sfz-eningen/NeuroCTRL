@@ -17,6 +17,7 @@ try:
   from .cli import *
   from .api import *
   from .AI import *
+  from.test_generator import *
 except:
   from basic_libs import *
   from basic_libs.general import *
@@ -27,6 +28,7 @@ except:
   from cli import *
   from api import *
   from AI import *
+  from test_generator import *
 import sys
 conf = Config()
 Cyton.eof()
