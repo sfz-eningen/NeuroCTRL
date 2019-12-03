@@ -32,3 +32,6 @@ $RECYCLE.BIN/
 # __pycache__
 *.pyc
 __pycache__/
+
+# other
+graphics/
