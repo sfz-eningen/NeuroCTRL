@@ -3,19 +3,12 @@
 # You may use this script or it´s contents as long as you credit the author by keeping this header intact.
 #             © NeuroCTRL 2019
 # Author:     Frederik Beimgraben, Maximilian Menzel
-# Last edit:  01.12.2019
+# Last edit:  03.12.2019
 # Purpose:    This script is used to define the chronological order of the called classes and functions.
 ###
-## COMMENT
-from os import system, path, chdir
+## CHANGE DIRECTORY TO PROJECT ROOT
+from os import path, chdir
 chdir(path.dirname(path.realpath(__file__)))
-
-"""
-Start Main Script:
->>> import main
-To get classes only:
->>> from __init__ import *
-"""
 ## IMPORTS
 from basic_libs.general import fwatcher as fw   # IMPORT Watchdog
 f = fw(__file__)                                # CREATE Watchdog
@@ -24,9 +17,9 @@ s = Settings()                                  # READ Settings
 from __init__ import flaskAPI, AutoStream, sys,\
     brainAI, dimc, AII, cleanup, \
     AIIk                                        # IMPORT Classes
-from numpy import round as nround
 import time                                     # IMPORT Time module
-## SCRIPT
+# CONFIGURATION AND STREAMS
+# (AI)
 AIIk("<CREATE AI>")
 states = ["Idle", "Focused", "Up", "Down", "Left", "Right"]
 AI = brainAI()
@@ -38,28 +31,33 @@ except KeyboardInterrupt:
     cleanup([], f)
     sys.exit("\n\n\x1B[31;1m" + "INTERRUPTED BY USER!\x1B[0m\n")
 AIIk("<TRAINED AI>")
-time.sleep(1)
+# (STREAMS)
 AIIk("<CREATE STREAMS>")
-Streams = []    # Create empty list to store AutoStream objects
+# Create empty list to store AutoStream objects
+Streams = []
+# Loop to start all Streams
 for Stream in s.Streams:
-    # Create "communication.receive.AutoStream" object
-    Streams.append(AutoStream(Stream["type"])) # Create and start data stream
+    # Create and start data stream
+    Streams.append(AutoStream(Stream["type"])) 
 AIIk("<CREATED STREAMS>")
-
-time.sleep(1)
-
+# MAIN THREAD LOOP
 AIIk("<READER LOOP>")
 try:                    # Wait until broke by CTRL+C
     while 1:            # Do nothing for ever
         m = []
         for e in Streams[0].read():
+            # Read and convert data
             m.append(dimc(e))
+        # AI-Analyze data
         ana = AI.analyze(m)
         for x in ana:
+            # Print Result
             sys.stdout.write("\n" + str(x) + "  " + str(states[int(x+0.5)]))
 except KeyboardInterrupt:
     AII("\x1B[31m" + "INTERRUPTED BY USER!")
 except ValueError:
     AII("\x1B[31m" + "VALUE ERROR!")
 finally:
+    # Kill all Threads
     cleanup(Streams, f)
+# EOF
