@@ -1,2 +1,2 @@
-*.html vendored
-OpenBCI_GUI/* vendored
+*.html linguist-vendored
+OpenBCI_GUI/* linguist-vendored
