@@ -4,7 +4,7 @@
 #             © NeuroCTRL 2019
 # Author:     Frederik Beimgraben, Maximilian Menzel
 # Last edit:  03.12.2019
-# Purpose:    This script is used to define the chronological order of the called classes and functions.
+# Purpose:    This script is used to test the accuracy of the Random Forest Regressor
 ###
 ## CHANGE DIRECTORY TO PROJECT ROOT
 from os import path, chdir
