@@ -7,6 +7,9 @@
 # Purpose:    This script is used to define the chronological order of the called classes and functions.
 ###
 ## COMMENT
+from os import system, path, chdir
+chdir(path.dirname(path.realpath(__file__)))
+
 """
 Start Main Script:
 >>> import main
