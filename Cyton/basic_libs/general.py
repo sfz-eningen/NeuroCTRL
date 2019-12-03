@@ -24,13 +24,13 @@ class fwatcher():
         print("\t\t\t\n\t\t\t")
         print(co)
 
-class swatcher():
-    t = 0.0
-    def __init__(self, file):
-        self.t, self.file = time.time(), name
-    def eof(self):
-        co = f"""\x1B[33;1m{self.file}\x1B[34;1m:\x1B[32;1mEOS\n  \x1B[32;1mExecution took: {round(100*(time.time()-self.t))/100}s\x1B[0m\n"""
-        print(co)
+# class swatcher():
+#     t = 0.0
+#     def __init__(self, file):
+#         self.t, self.file = time.time(), name
+#     def eof(self):
+#         co = f"""\x1B[33;1m{self.file}\x1B[34;1m:\x1B[32;1mEOS\n  \x1B[32;1mExecution took: {round(100*(time.time()-self.t))/100}s\x1B[0m\n"""
+#         print(co)
 
 class iwatcher():
     t = 0.0
