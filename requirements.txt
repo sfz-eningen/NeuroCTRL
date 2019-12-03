@@ -1,0 +1,16 @@
+shutil
+cython
+socket
+importlib
+threading
+logging
+queue
+ctypes
+numpy
+pandas
+sklearn
+flask
+flaskwebgui
+flask_restful
+matplotlib
+scipy
