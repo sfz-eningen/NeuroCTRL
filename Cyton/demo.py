@@ -22,11 +22,10 @@ f = fw(__file__)                                # CREATE Watchdog
 from settings import Settings                   # IMPORT Settings
 s = Settings()                                  # READ Settings
 from __init__ import flaskAPI, AutoStream, sys,\
-    brainAI, dimc, TestStreamer, AII, cleanup, \
+    brainAI, dimc, AII, cleanup, \
     AIIk                                        # IMPORT Classes
 from numpy import round as nround
 import time                                     # IMPORT Time module
-from threading import Thread                    # IMPORT threading module 
 ## SCRIPT
 AIIk("<CREATE AI>")
 states = ["Idle", "Focused", "Up", "Down", "Left", "Right"]
