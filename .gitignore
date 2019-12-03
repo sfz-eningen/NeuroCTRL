@@ -35,3 +35,5 @@ __pycache__/
 
 # other
 build/
+.vscode/
+OpenBCI_GUI/
