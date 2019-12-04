@@ -3,4 +3,4 @@
 # NeuroCTRL
 Project with the goal to control a prosthesis with thoughts
 
-<b> DONT USE YET - PACKAGE IS STILL IN EARLY DEVELOPMENT </b>
+<b> DON'T USE YET - PACKAGE IS STILL IN EARLY DEVELOPMENT </b>
