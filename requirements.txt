@@ -1,12 +1,6 @@
 # Requirements for the NeuroCTRL package
-shutil
 cython
-socket
 importlib
-threading
-logging
-queue
-ctypes
 numpy
 pandas
 sklearn
@@ -18,3 +12,5 @@ scipy
 keyboard
 pyOpenBCI
 brainflow
+pyinstaller
+virtualenv
