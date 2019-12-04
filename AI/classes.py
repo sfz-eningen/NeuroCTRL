@@ -89,8 +89,11 @@ class brainAI():
                          RandomForestRegressor(n_estimators=100))
         AINp()
         AIN("PREDICTOR", f"Creating predictor...")
+        AINc("", "Creating model scaffolding...")
+        AINp()
         self.clf = GridSearchCV(pipeline, self.hyperparameters, cv=10)
         # Fit and tune model
+        AINc("", "Fitting model to data...")
         self.clf.fit(X_train, y_train)
         AINp()
         AII("AI TRAINED!\nUse {object name}.analyze({data}) to predict.")

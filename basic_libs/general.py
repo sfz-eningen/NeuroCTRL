@@ -62,11 +62,15 @@ class pwatcher():
 #         status = "END"
 #     print("\n\x1B[34;1m\t" + f"""---------- {section}:{status} ----------""".center(columns - 12, "-") + "\x1B[0m")
 
+def AIIk(text):
+    sys.stdout.write(f"\n\x1B[33;1m{text}\x1B[0m\n".replace("<", "\x1B[32m<\x1B[33m").replace(">", "\x1B[32m>\x1B[33m"))
+
 def cleanup(Streams, f):
-    print("\n\x1B[34;1m" + "CLEANING UP!")
+    AIIk("<CLEANING UP!>")
     for c in Streams:   # Stop Streams on exit
         c.stop()
     # EOF
     time.sleep(2)
     f.eof()             # Stop Watchdog
-    sys.exit("\n\x1B[34;1m" + "CLEANED UP!\x1B[0m\n")
+    AIIk("<CLEANED UP!>")
+    sys.exit()

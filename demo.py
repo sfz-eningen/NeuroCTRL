@@ -52,11 +52,11 @@ try:                    # Wait until broke by CTRL+C
         ana = AI.analyze(m)
         for x in ana:
             # Print Result
-            sys.stdout.write("\n" + str(x) + "  " + str(states[int(x+0.5)]))
+            sys.stdout.write("\n" + str(x).ljust(4, "0") + "  " + str(states[int(x+0.5)]))
 except KeyboardInterrupt:
-    AII("\x1B[31m" + "INTERRUPTED BY USER!")
+    AIIk("<\x1B[31m" + "INTERRUPTED BY USER!>")
 except ValueError:
-    AII("\x1B[31m" + "VALUE ERROR!")
+    AIIk("<\x1B[31m" + "VALUE ERROR!>")
 finally:
     # Kill all Threads
     cleanup(Streams, f)
