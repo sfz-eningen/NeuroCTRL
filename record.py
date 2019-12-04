@@ -29,7 +29,7 @@ topline = ""
 for ch in range(16):
     for band in ["a", "b", "g", "d", "t"]:
         topline += f"{band}_{ch}; "
-print(topline)
+# print(topline)
 f.write(f"{topline}ACTION\n")
 f.close()
 f = open(file, "a+")
@@ -44,6 +44,8 @@ try:
             for val in dimc(v):
                 lineo += f"{val}; "
             f.write(f"{lineo}1\n")
+            sys.stdout.write(".")
+            sys.stdout.flush()
         if keypress()==113:
             sys.exit()
 
