@@ -14,3 +14,4 @@ flaskwebgui
 flask_restful
 matplotlib
 scipy
+keyboard
