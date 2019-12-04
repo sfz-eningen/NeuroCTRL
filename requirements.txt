@@ -1,3 +1,4 @@
+# Requirements for the NeuroCTRL package
 shutil
 cython
 socket
@@ -15,3 +16,5 @@ flask_restful
 matplotlib
 scipy
 keyboard
+pyOpenBCI
+brainflow
