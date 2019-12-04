@@ -6,10 +6,6 @@ import sys
 import msvcrt
 
 def keypress(): 
-    """
-    Waits for the user to press a key. Returns the ascii code 
-    for the key pressed or zero for a function key pressed.
-    """                             
     import msvcrt               
     while 1:
         if msvcrt.kbhit():              # Key pressed?
@@ -27,15 +23,19 @@ file = f"./samples/sample_record_{str(datetime.now()).replace(':', '-').replace(
 f = open(file, "w+")
 topline = ""
 for ch in range(16):
-    for band in ["a", "b", "g", "d", "t"]:
+    for band in ["delta", "theta", "alpha", "beta", "gamma"]:
         topline += f"{band}_{ch}; "
-# print(topline)
+
+
 f.write(f"{topline}ACTION\n")
 f.close()
+
 f = open(file, "a+")
+
 try:
     while 1:
         print("LOOP")
+
         while keypress()==114:
             lineo = ""
             v = 0
@@ -46,10 +46,10 @@ try:
             f.write(f"{lineo}1\n")
             sys.stdout.write(".")
             sys.stdout.flush()
+        
         if keypress()==113:
             sys.exit()
 
-            
 except KeyboardInterrupt:
     pass
 finally:
