@@ -1,9 +1,36 @@
 from communication import AutoStream
-from AI import dimc
+# from AI import dimc
 import keyboard
 from datetime import datetime
 import sys
 import msvcrt
+
+def dimc(dct):
+    data = dct["data"]
+    dout = []
+    if len(data) == 16:
+        for channel in data:
+            for band in channel:
+                dout.append(band)
+    elif len(data) == 8:
+        for channel in data:
+            for band in channel:
+                dout.append(band)
+            for band in channel:
+                dout.append(band)
+    elif len(data) == 4:
+        for channel in data:
+            for band in channel:
+                dout.append(band)
+            for band in channel:
+                dout.append(band)
+            for band in channel:
+                dout.append(band)
+            for band in channel:
+                dout.append(band)
+    else:
+        raise Exception(f"UNKNOWN DATA FORMAT: {len(data)} Channels; VALID COUNTS: " + "{4, 8, 16}")
+    return dout
 
 def keypress(): 
     import msvcrt               

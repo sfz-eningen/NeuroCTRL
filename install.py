@@ -19,4 +19,9 @@ for dirn in d:
 command = f'{path.split(sys.executable)[0]}\Scripts\pyinstaller --add-data "{sys.path[-1]}\scipy\sparse\linalg\isolve\_iterative.cp37-win32.pyd";"site-packages\scipy\sparse\linalg\isolve" -i {path.abspath("build-files/icon.ico")} -y -F {fst} {dst} {argv[1]}'
 print(f"{getcwd()}>", command)
 system(command)
-remove(path.abspath("./build"))
+from shutil import copyfile
+try:
+  remove(f'{argv[1].replace(".py", "")}.exe')
+except:
+  pass
+copyfile(f'./dist/{argv[1].replace(".py", ".exe")}', f'{getcwd()}\\{argv[1].replace(".py", ".exe")}')

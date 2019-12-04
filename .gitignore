@@ -39,3 +39,4 @@ build/
 OpenBCI_GUI/
 dist/
 output/
+*.exe
