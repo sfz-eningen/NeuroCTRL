@@ -40,3 +40,4 @@ OpenBCI_GUI/
 dist/
 output/
 *.exe
+*.spec
