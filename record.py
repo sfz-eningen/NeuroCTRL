@@ -44,8 +44,6 @@ def keypress():
                 return a                # else return ascii code
 
 Stream = AutoStream("band")
-
-inpt = int(input("ENTER TRAINED STATE! (int) > "))
 file = f"./samples/sample_record_{str(datetime.now()).replace(':', '-').replace(' ', '--')}.csv"
 f = open(file, "w+")
 topline = ""
@@ -53,30 +51,34 @@ for ch in range(16):
     for band in ["delta", "theta", "alpha", "beta", "gamma"]:
         topline += f"{band}_{ch}; "
 
-
 f.write(f"{topline}ACTION\n")
 f.close()
 
 f = open(file, "a+")
 
+
+
 try:
     while 1:
-        print("LOOP")
+        inpt = input("\n\nENTER TRAINED STATE! (int/q) > ")
+        if inpt == "q":
+            break
+        while 1:
+            print("LOOP")
 
-        while keypress()==114:
-            lineo = ""
-            v = 0
-            for v in Stream.read():
-                pass
-            for val in dimc(v):
-                lineo += f"{val}; "
-            f.write(f"{lineo}1\n")
-            sys.stdout.write(".")
-            sys.stdout.flush()
-        
-        if keypress()==113:
-            sys.exit()
-
+            while keypress()==114:
+                lineo = ""
+                v = 0
+                for v in Stream.read():
+                    pass
+                for val in dimc(v):
+                    lineo += f"{val}; "
+                f.write(f"{lineo}{inpt}\n")
+                sys.stdout.write(".")
+                sys.stdout.flush()
+            
+            if keypress()==113:
+                break
 except KeyboardInterrupt:
     pass
 finally:
