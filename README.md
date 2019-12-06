@@ -1,8 +1,6 @@
 <link rel="icon" href="http://icons.iconarchive.com/icons/papirus-team/papirus-apps/512/python-icon.png">
 
 # NeuroCTRL
-## Cyton Folder ([master/Cyton](./Cyton))
-Currently under development
+Project with the goal to control a prosthesis with thoughts
 
-## Links
-[TODO Page](https://sfz-eningen.github.io/NeuroCTRL/TODO)
+<b> DON'T USE YET - PACKAGE IS STILL IN EARLY DEVELOPMENT </b>
