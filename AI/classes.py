@@ -60,7 +60,7 @@ class brainAI():
         AII(f"Training from '{file}'...")
         AIN("SAMPLE-PREPROCESSING", f"Cleaning up samples in '{file}'...")
         f = open(file, "r")
-        s = f.read().replace(",", ".")
+        s = f.read().replace(",", ".").replace(" ", "")
         f.close()
         f = open(file, "w")
         f.write(s)
@@ -70,6 +70,7 @@ class brainAI():
         self.data = pd.read_csv(file, sep=sep)
         AINp()
         AIN("PREPROCESSING", f"Creating axes...")
+        print(self.data.columns.values)
         y = self.data.ACTION
         X = self.data.drop('ACTION', axis=1)
         AINp()
