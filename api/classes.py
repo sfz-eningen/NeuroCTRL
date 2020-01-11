@@ -7,6 +7,33 @@ import ctypes
 import sys
 import random
 
+def dimc(dct):
+    data = dct["data"]
+    dout = []
+    if len(data) == 16:
+        for channel in data:
+            for band in channel:
+                dout.append(band)
+    elif len(data) == 8:
+        for channel in data:
+            for band in channel:
+                dout.append(band)
+            for band in channel:
+                dout.append(band)
+    elif len(data) == 4:
+        for channel in data:
+            for band in channel:
+                dout.append(band)
+            for band in channel:
+                dout.append(band)
+            for band in channel:
+                dout.append(band)
+            for band in channel:
+                dout.append(band)
+    else:
+        raise Exception(f"UNKNOWN DATA FORMAT: {len(data)} Channels; VALID COUNTS: " + "{4, 8, 16}")
+    return dout
+
 def rename(newname):
     def decorator(f):
         f.__name__ = newname
@@ -21,21 +48,27 @@ class flaskAPI(Thread):
     """
     pagesL = {}
     def __init__(self, local=0):
+        print("API Online")
         Thread.__init__(self)
         self.local = local
         self.app = Flask(__name__)
         @self.app.route("/<page>")
         def Send(page):
             so = []
-            try:
-                for x in self.pagesL['/'+page]['handle'].read():
-                    so.append(x["data"])
-                return {"response": 200, "type": self.pagesL['/'+page]['handle'].dtype,"data": so}
-            except:
-                return {"response": 404, "data": 'NOT FOUND'}
+            pred = []
+            page = self.pagesL['/'+page]
+            for x in page['handle'].read():
+                d = dimc(x)
+            for x in page['ai']:
+                print(page['ai'])
+                pred.append(float(x.analyze([d])))
+                print(pred)
+            return {"data": pred}
 
-    def addR(self, handle, page="/"):
-        self.pagesL[page] = {"handle": handle}
+    def addR(self, handle, ais, page="/"):
+        print("Adding...")
+        self.pagesL[page] = {"handle": handle, "ai": ais}
+        print(self.pagesL[page])
         vt = random.randint(100000, 999999)
     
 

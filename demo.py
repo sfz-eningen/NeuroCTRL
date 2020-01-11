@@ -20,17 +20,23 @@ from __init__ import flaskAPI, AutoStream, sys,\
 import time                                     # IMPORT Time module
 # CONFIGURATION AND STREAMS
 # (AI)
+
 AIIk("<CREATE AI>")
-states = ["Idle", "Focused", "Up", "Down", "Left", "Right"]
-AI = brainAI()
+AIf = brainAI()
+AIt = brainAI()
 AIIk("<CREATED AI>")
+
+
 AIIk("<TRAIN AI>")
 try:
-    AI.train()
+    AIf.train()
+    AIt.train(file="./samples/samples00.csv")
 except KeyboardInterrupt:
     cleanup([], f)
     sys.exit("\n\n\x1B[31;1m" + "INTERRUPTED BY USER!\x1B[0m\n")
 AIIk("<TRAINED AI>")
+
+
 # (STREAMS)
 AIIk("<CREATE STREAMS>")
 # Create empty list to store AutoStream objects
@@ -49,15 +55,16 @@ try:                    # Wait until broke by CTRL+C
             # Read and convert data
             m.append(dimc(e))
         # AI-Analyze data
-        ana = AI.analyze(m)
-        for x in ana:
+        anaf = AIf.analyze(m)
+        anat = AIt.analyze(m)
+        for x, y in zip(anaf, anat):
             # Print Result
-            sys.stdout.write("\n" + str(x).ljust(4, "0") + "  " + str(states[int(x+0.5)]))
+            sys.stdout.write("\n" + str(x).ljust(4, "0") + " " + str(y).ljust(4, "0"))
 except KeyboardInterrupt:
     AIIk("<\x1B[31m" + "INTERRUPTED BY USER!>")
 except ValueError:
     AIIk("<\x1B[31m" + "VALUE ERROR!>")
-finally:
-    # Kill all Threads
-    cleanup(Streams, f)
+# finally:
+#     # Kill all Threads
+#     cleanup(Streams, f)
 # EOF

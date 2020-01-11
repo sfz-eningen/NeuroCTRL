@@ -87,7 +87,7 @@ class brainAI():
         # AINp()
         AIN("PIPELINE", f"Creating pipeline...")
         pipeline = make_pipeline(preprocessing.StandardScaler(), 
-                         RandomForestRegressor(n_estimators=100))
+                         RandomForestRegressor(n_estimators=100, n_jobs=-3))
         AINp()
         AIN("PREDICTOR", f"Creating predictor...")
         AINc("", "Creating model scaffolding...")
