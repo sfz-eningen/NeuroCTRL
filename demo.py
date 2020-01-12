@@ -1,9 +1,8 @@
 ### INFO AND LICENSING ###
 # This code is licensed under the GNU GPL V3.
 # You may use this script or it´s contents as long as you credit the author by keeping this header intact.
-#             © NeuroCTRL 2019
+#             © NeuroCTRL 2020
 # Author:     Frederik Beimgraben, Maximilian Menzel
-# Last edit:  03.12.2019
 # Purpose:    This script is used to test the accuracy of the Random Forest Regressor
 ###
 ## CHANGE DIRECTORY TO PROJECT ROOT
@@ -29,8 +28,8 @@ AIIk("<CREATED AI>")
 
 AIIk("<TRAIN AI>")
 try:
-    AIf.train()
-    AIt.train(file="./samples/samples00.csv")
+    AIf.train(file="./samples/samples000.csv")
+    AIt.train(file="./samples/samples0000.csv")
 except KeyboardInterrupt:
     cleanup([], f)
     sys.exit("\n\n\x1B[31;1m" + "INTERRUPTED BY USER!\x1B[0m\n")
@@ -56,10 +55,10 @@ try:                    # Wait until broke by CTRL+C
             m.append(dimc(e))
         # AI-Analyze data
         anaf = AIf.analyze(m)
-        anat = AIt.analyze(m)
-        for x, y in zip(anaf, anat):
+        #anat = AIt.analyze(m)
+        for x in anat:
             # Print Result
-            sys.stdout.write("\n" + str(x).ljust(4, "0") + " " + str(y).ljust(4, "0"))
+            sys.stdout.write("\n" + str(x).ljust(4, "0"))
 except KeyboardInterrupt:
     AIIk("<\x1B[31m" + "INTERRUPTED BY USER!>")
 except ValueError:

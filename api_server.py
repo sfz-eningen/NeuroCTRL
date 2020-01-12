@@ -1,10 +1,9 @@
 ### INFO AND LICENSING ###
 # This code is licensed under the GNU GPL V3.
 # You may use this script or it´s contents as long as you credit the author by keeping this header intact.
-#             © NeuroCTRL 2019
+#             © NeuroCTRL 2020
 # Author:     Frederik Beimgraben, Maximilian Menzel
-# Last edit:  03.12.2019
-# Purpose:    This script is used to test the accuracy of the Random Forest Regressor
+# Purpose:    -
 ###
 ## CHANGE DIRECTORY TO PROJECT ROOT
 from os import path, chdir
