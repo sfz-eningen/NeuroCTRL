@@ -57,9 +57,9 @@ class brainAI():
         for key in hyperparameters:
             self.hyperparameters[key] = hyperparameters[key]
 
-        AII(f"Training from '{file}'...")
-        AIN("SAMPLE-PREPROCESSING", f"Cleaning up samples in '{file}'...")
+        AII(f"Trying to train from '{file}'...")
         f = open(file, "r")
+        AIN("SAMPLE-PREPROCESSING", f"Cleaning up samples in '{file}'...")
         s = f.read().replace(",", ".").replace(" ", "")
         f.close()
         f = open(file, "w")
@@ -70,7 +70,7 @@ class brainAI():
         self.data = pd.read_csv(file, sep=sep)
         AINp()
         AIN("PREPROCESSING", f"Creating axes...")
-        print(self.data.columns.values)
+        # print(self.data.columns.values)
         y = self.data.ACTION
         X = self.data.drop('ACTION', axis=1)
         AINp()
